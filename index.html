@@ -108,8 +108,8 @@
   --po:25px;
 }
 
-body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',sans-serif;background:#fff;height:100%;overscroll-behavior:none;}
-.app{max-width:430px;margin:0 auto;height:100%;display:flex;flex-direction:column;background:#fff;}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',sans-serif;background:#f9f9f9;min-height:100dvh;height:100dvh;overflow:hidden;overscroll-behavior:none;}
+.app{max-width:430px;margin:0 auto;height:100dvh;display:flex;flex-direction:column;background:#f2f2f7;}
 .hdr{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;z-index:100;overflow:visible;padding-top:max(var(--st),14px);}
 .hdr::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:var(--g);z-index:-1;}
 .hdr-top{padding:10px 20px 14px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden;max-height:100px;opacity:1;transition:max-height .3s cubic-bezier(.4,0,.2,1),opacity .2s ease,padding-top .3s cubic-bezier(.4,0,.2,1),padding-bottom .3s cubic-bezier(.4,0,.2,1);}
@@ -127,7 +127,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .hdr.scrolled .pill{box-shadow:none;}
 .pill:active{opacity:.8;}
 .pill-ico{color:var(--g);display:flex;align-items:center;flex-shrink:0;}
-.body{flex:1;overflow-y:scroll;-webkit-overflow-scrolling:touch;overscroll-behavior-y:none;background:var(--bg);}
+.body{flex:1;overflow-y:scroll;-webkit-overflow-scrolling:touch;overscroll-behavior-y:none;background:#f2f2f7;padding-bottom:calc(56px + env(safe-area-inset-bottom,34px));}
 .sec{margin-top:24px;}
 .sec-hdr{display:flex;justify-content:space-between;align-items:center;padding:0 20px 12px;}
 .sec-title{font-size:20px;font-weight:700;color:var(--t);display:flex;align-items:center;gap:3px;}
@@ -188,28 +188,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .help-circle{width:58px;height:58px;border-radius:50%;border:.5px solid var(--sep);background:var(--w);display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.07);}
 .help-lbl{font-size:12.5px;font-weight:600;color:var(--t);}
 
-.nb{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:none;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;padding:0 0 2px 0;cursor:pointer;}
+.nb{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:none;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;padding:6px 0 0 0;cursor:pointer;}
 .nb-lbl{font-size:10px;color:var(--h);font-weight:500;margin-top:0;}
 .nb.on .nb-lbl{color:var(--g);}
-/* ── Exact match to real TD app bottom nav ── */
-html, body { height: 100dvh; overflow: hidden; background: #f4f4f4; }
-.app { height: 100dvh; background: #f2f2f7; }
-/* Body scrollable area clears the nav exactly */
-/* Nav background extends into safe area zone (same grey as nav) */
-.bnav::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 0; right: 0;
-  height: 40px;
-  background: #f4f4f4;
-}
-.body { padding-bottom: calc(44px + env(safe-area-inset-bottom, 34px)); }
-* { -webkit-text-size-adjust: 100%; }
-.bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:#f4f4f4;border-top:.5px solid rgba(60,60,67,0.18);display:flex;z-index:100;padding-top:6px;padding-bottom:env(safe-area-inset-bottom,34px);}
-
-
-
+.bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:#f9f9f9 !important;border-top:.5px solid rgba(60,60,67,0.18);display:flex;z-index:100;padding-top:8px;padding-bottom:env(safe-area-inset-bottom,0px) !important;}
 
 .ov{position:fixed;inset:0;background:rgba(0,0,0,0);z-index:500;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;transition:background .3s ease;}
 .ov.open{background:rgba(0,0,0,.48);pointer-events:all;}
@@ -328,7 +310,21 @@ html, body { height: 100dvh; overflow: hidden; background: #f4f4f4; }
 .te-add-month-btn:active{opacity:.85;}
 
 /* ── Nav clearance ── */
-* { -webkit-text-size-adjust: 100%; }
+
+
+/* ── Drag to reorder ── */
+.te-card{position:relative;transition:box-shadow .2s,transform .15s;}
+.te-card.dragging{opacity:.85;box-shadow:0 8px 28px rgba(0,0,0,.18);transform:scale(1.01);z-index:999;}
+.te-card.drag-over-top{border-top:2px solid var(--g);}
+.te-card.drag-over-bottom{border-bottom:2px solid var(--g);}
+.te-drag-handle{position:absolute;right:14px;top:50%;transform:translateY(-50%);width:28px;height:36px;display:flex;align-items:center;justify-content:center;cursor:grab;color:#c7c7cc;touch-action:none;}
+.te-drag-handle:active{cursor:grabbing;}
+
+
+/* ── Nav safe area fill ── */
+html{background:#f9f9f9;}
+.bnav::after{content:'';position:absolute;top:100%;left:0;right:0;height:50px;background:#f9f9f9 !important;}
+@supports not (height:100dvh){html,body,.app{height:100%;}}
 </style>
 </head>
 <body>
@@ -451,7 +447,6 @@ html, body { height: 100dvh; overflow: hidden; background: #f4f4f4; }
     <button class="nb"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--h)" stroke-width="1.9" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg><span class="nb-lbl">More</span></button>
   </div>
 </div>
-<div id="safe-fill" style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;height:env(safe-area-inset-bottom,34px);background:#fff;z-index:99;pointer-events:none;"></div>
 
 <!-- Balance Edit Drawer -->
 <div class="ov" id="ov">
@@ -558,6 +553,34 @@ html, body { height: 100dvh; overflow: hidden; background: #f4f4f4; }
 <div class="toast" id="toast"></div>
 
 <script>
+
+// ── Force nav background via inline style (bypasses CSS specificity) ──
+(function() {
+  function fixNav() {
+    var bnav = document.getElementById('bnav');
+    if (!bnav) return;
+    bnav.style.background = '#f9f9f9';
+    bnav.style.paddingBottom = 'env(safe-area-inset-bottom, 0px)';
+    // Create/update the fill div
+    var fill = document.getElementById('nav-fill');
+    if (!fill) {
+      fill = document.createElement('div');
+      fill.id = 'nav-fill';
+      fill.style.cssText = 'position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;z-index:99;pointer-events:none;';
+      document.body.appendChild(fill);
+    }
+    var safeArea = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--sb')) || 0;
+    // Use a reliable height
+    fill.style.height = Math.max(safeArea, 34) + 'px';
+    fill.style.background = '#f9f9f9';
+  }
+  document.addEventListener('DOMContentLoaded', fixNav);
+  window.addEventListener('resize', fixNav);
+  setTimeout(fixNav, 100);
+  setTimeout(fixNav, 500);
+  setTimeout(fixNav, 1500);
+})();
+
 // ── Greeting ──
 (function(){
   var h=new Date().getHours();
@@ -705,7 +728,6 @@ var txnData=[
   ]
 ];
 
-
 // ── localStorage persistence ──
 var STORE_KEY = 'td_app_v2';
 function saveToStorage() {
@@ -724,6 +746,76 @@ function loadFromStorage() {
   } catch(e) {}
   return false;
 }
+
+// ── Auto-generate deposit transactions on balance change ──
+var DEPOSIT_SOURCES = [
+  'STAKE COM INC',    // Stake.com wire transfer - real TD format
+  'KICK STREAMING',   // Kick.com creator payout - real TD format  
+  'WHOP INC',         // Whop.com marketplace payout - real TD format
+  'SKOOL COM INC'     // Skool.com community payout - real TD format
+];
+function getDayName(d) {
+  return ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][d.getDay()];
+}
+function getMonthName(d) {
+  return ['January','February','March','April','May','June','July','August','September','October','November','December'][d.getMonth()];
+}
+function fmtDate(d) {
+  return getDayName(d) + ' ' + getMonthName(d) + ' ' + d.getDate() + ', ' + d.getFullYear();
+}
+function generateDeposits(idx, newBal) {
+  // Figure out old balance from current txn sum
+  recalcRunningBalances(idx);
+  var oldBal = accts[idx].bal;
+  var diff = Math.round((newBal - oldBal) * 100) / 100;
+  if (Math.abs(diff) < 0.01) return; // no change
+
+  // Split the difference into 2-4 realistic deposits or one debit
+  var groups = txnData[idx];
+  if (diff > 0) {
+    // Split into 2-4 deposits from different sources
+    var numDeposits = Math.min(4, Math.max(2, Math.floor(diff / 500) + 1));
+    // Create deposits spread across last few days
+    var today = new Date(2026, 2, 14); // March 14 2026
+    var amounts = [];
+    var remaining = diff;
+    for (var i = 0; i < numDeposits - 1; i++) {
+      var chunk = Math.round((remaining * (0.2 + Math.random() * 0.4)) * 100) / 100;
+      chunk = Math.max(1, chunk);
+      amounts.push(chunk);
+      remaining = Math.round((remaining - chunk) * 100) / 100;
+    }
+    amounts.push(Math.round(remaining * 100) / 100);
+    // Shuffle sources
+    var srcs = DEPOSIT_SOURCES.slice().sort(function(){return Math.random()-0.5;});
+    // Group by date - spread across last 1-3 days
+    var byDate = {};
+    for (var i = 0; i < amounts.length; i++) {
+      var daysBack = Math.floor(i / 2);
+      var d = new Date(today.getTime() - daysBack * 86400000);
+      var dateStr = fmtDate(d);
+      if (!byDate[dateStr]) byDate[dateStr] = [];
+      byDate[dateStr].push({name: srcs[i % srcs.length], amt: amounts[i], running: 0});
+    }
+    // Prepend new date groups at the front (most recent first)
+    var newGroups = [];
+    var dates = Object.keys(byDate).sort(function(a,b){
+      // Most recent first
+      return new Date(b.replace(/(\w+) (\w+) (\d+), (\d+)/,'$2 $3 $4')) - new Date(a.replace(/(\w+) (\w+) (\d+), (\d+)/,'$2 $3 $4'));
+    });
+    for (var i = 0; i < dates.length; i++) {
+      newGroups.push({date: dates[i], txns: byDate[dates[i]]});
+    }
+    txnData[idx] = newGroups.concat(groups);
+  } else {
+    // Negative: add a single debit at top
+    var today = new Date(2026, 2, 14);
+    var dateStr = fmtDate(today);
+    var newGroup = {date: dateStr, txns: [{name:'TRANSFER OUT', amt: diff, running:0}]};
+    txnData[idx] = [newGroup].concat(groups);
+  }
+}
+
 function fmt(n){var a=Math.abs(n);var s='$'+a.toLocaleString('en-CA',{minimumFractionDigits:2,maximumFractionDigits:2});return n<0?'-'+s:s;}
 
 function render(){
@@ -771,7 +863,20 @@ function buildList(){
 }
 function openDrawer(){buildList();document.getElementById('ov').classList.add('open');}
 function closeDrawer(){document.getElementById('ov').classList.remove('open');}
-function saveAll(){for(var i=0;i<accts.length;i++){var inp=document.getElementById('ei'+i);if(inp){var v=parseFloat(inp.value);accts[i].bal=isNaN(v)?0:v;}}render();}
+function saveAll(){
+  for(var i=0;i<accts.length;i++){
+    var inp=document.getElementById('ei'+i);
+    if(inp){
+      var v=parseFloat(inp.value);
+      if(!isNaN(v)){
+        generateDeposits(i, v);
+        accts[i].bal=v;
+      }
+    }
+  }
+  for(var i=0;i<accts.length;i++){recalcRunningBalances(i);}
+  render();
+}
 function saveClose(){saveAll();saveToStorage();closeDrawer();showToast('Balances updated ✓');}
 function tap(id,fn){var el=document.getElementById(id),m=false;el.addEventListener('touchstart',function(){m=false;},{passive:true});el.addEventListener('touchmove',function(){m=true;},{passive:true});el.addEventListener('touchend',function(e){if(!m){e.preventDefault();fn();}});el.addEventListener('click',fn);}
 tap('done-btn',saveClose);tap('save-btn',saveClose);
@@ -951,6 +1056,7 @@ function buildTxnEditList(idx) {
             '</div>' +
           '</div>';
 
+        addDragHandleToCard(card, g, t);
         list.appendChild(card);
       })(g, t, group.txns[t]);
     }
@@ -1073,6 +1179,75 @@ document.getElementById('te-list').addEventListener('click', function(e) {
   var signEl = card.querySelector('.te-sign');
   if (signEl) signEl.textContent = (type === 'credit' ? '+' : '-') + '$';
 });
+
+
+// ── Drag-to-reorder transactions ──
+var dragSrcGi = -1, dragSrcTi = -1;
+var dragCurrentEl = null;
+
+function addDragHandleToCard(card, gi, ti) {
+  var handle = document.createElement('div');
+  handle.className = 'te-drag-handle';
+  handle.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="6" r="1.5"/><circle cx="15" cy="6" r="1.5"/><circle cx="9" cy="12" r="1.5"/><circle cx="15" cy="12" r="1.5"/><circle cx="9" cy="18" r="1.5"/><circle cx="15" cy="18" r="1.5"/></svg>';
+  handle.dataset.gi = gi;
+  handle.dataset.ti = ti;
+  card.style.paddingRight = '44px';
+  card.appendChild(handle);
+
+  // Touch drag
+  var startY = 0, isDragging = false;
+  handle.addEventListener('touchstart', function(e) {
+    e.stopPropagation();
+    startY = e.touches[0].clientY;
+    dragSrcGi = parseInt(gi);
+    dragSrcTi = parseInt(ti);
+    dragCurrentEl = card;
+    setTimeout(function(){
+      if(dragCurrentEl) dragCurrentEl.classList.add('dragging');
+      isDragging = true;
+    }, 120);
+  }, {passive:true});
+
+  handle.addEventListener('touchmove', function(e) {
+    if (!isDragging) return;
+    e.preventDefault();
+    var touch = e.touches[0];
+    var el = document.elementFromPoint(touch.clientX, touch.clientY);
+    var targetCard = el ? el.closest('.te-card') : null;
+    document.querySelectorAll('.te-card').forEach(function(c){c.classList.remove('drag-over-top','drag-over-bottom');});
+    if (targetCard && targetCard !== dragCurrentEl) {
+      var rect = targetCard.getBoundingClientRect();
+      var mid = rect.top + rect.height / 2;
+      targetCard.classList.add(touch.clientY < mid ? 'drag-over-top' : 'drag-over-bottom');
+    }
+  }, {passive:false});
+
+  handle.addEventListener('touchend', function(e) {
+    if (!isDragging) { isDragging = false; return; }
+    isDragging = false;
+    document.querySelectorAll('.te-card').forEach(function(c){c.classList.remove('dragging','drag-over-top','drag-over-bottom');});
+    dragCurrentEl = null;
+    var touch = e.changedTouches[0];
+    var el = document.elementFromPoint(touch.clientX, touch.clientY);
+    var targetCard = el ? el.closest('.te-card') : null;
+    if (!targetCard || targetCard === card) return;
+    var tgi = parseInt(targetCard.querySelector('[data-gi]') ? targetCard.querySelector('[data-gi]').dataset.gi : -1);
+    var tti = parseInt(targetCard.querySelector('[data-ti]') ? targetCard.querySelector('[data-ti]').dataset.ti : -1);
+    if (tgi < 0 || tti < 0) return;
+    // Move transaction
+    var srcTxn = txnData[currentAcctIdx][dragSrcGi].txns.splice(dragSrcTi, 1)[0];
+    // Re-find target since indices may have shifted
+    var rect = targetCard.getBoundingClientRect();
+    var insertBefore = touch.clientY < rect.top + rect.height / 2;
+    var insertIdx = insertBefore ? tti : tti + 1;
+    // If src group is same as target group and src was before target, adjust
+    if (dragSrcGi === tgi && dragSrcTi < tti) insertIdx = Math.max(0, insertIdx - 1);
+    txnData[currentAcctIdx][tgi].txns.splice(insertIdx, 0, srcTxn);
+    // Remove empty groups
+    txnData[currentAcctIdx] = txnData[currentAcctIdx].filter(function(g){return g.txns.length > 0;});
+    buildTxnEditList(currentAcctIdx);
+  });
+}
 
 document.getElementById('txn-dots-btn').addEventListener('click', openTxnEdit);
 document.getElementById('te-done-btn').addEventListener('click', function() { saveTxnEdits(); });
