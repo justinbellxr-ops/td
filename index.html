@@ -98,7 +98,7 @@
   w.QRCode.CorrectLevel={L:1,M:0,Q:3,H:2};
 })(window);
 </script>
-<style>
+<style>html{height:100dvh;background:#f2f2f7;}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none;}
 :root{
   --g:#1a7c1a;--gbg:#eef7ee;--w:#fff;--bg:#f2f2f7;
@@ -108,8 +108,9 @@
   --po:25px;
 }
 
-body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',sans-serif;background:#f9f9f9;min-height:100dvh;height:100dvh;overflow:hidden;overscroll-behavior:none;}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',sans-serif;background:#f2f2f7;height:100dvh;overflow:hidden;overscroll-behavior:none;}
 .app{max-width:430px;margin:0 auto;height:100dvh;display:flex;flex-direction:column;background:#f2f2f7;}
+.body{flex:1;overflow-y:scroll;-webkit-overflow-scrolling:touch;overscroll-behavior-y:none;background:#f2f2f7;padding-bottom:calc(60px + env(safe-area-inset-bottom,34px));}
 .hdr{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;z-index:100;overflow:visible;padding-top:max(var(--st),14px);}
 .hdr::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:var(--g);z-index:-1;}
 .hdr-top{padding:10px 20px 14px;display:flex;justify-content:space-between;align-items:flex-start;overflow:hidden;max-height:100px;opacity:1;transition:max-height .3s cubic-bezier(.4,0,.2,1),opacity .2s ease,padding-top .3s cubic-bezier(.4,0,.2,1),padding-bottom .3s cubic-bezier(.4,0,.2,1);}
@@ -127,7 +128,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .hdr.scrolled .pill{box-shadow:none;}
 .pill:active{opacity:.8;}
 .pill-ico{color:var(--g);display:flex;align-items:center;flex-shrink:0;}
-.body{flex:1;overflow-y:scroll;-webkit-overflow-scrolling:touch;overscroll-behavior-y:none;background:#f2f2f7;padding-bottom:calc(56px + env(safe-area-inset-bottom,34px));}
+.
 .sec{margin-top:24px;}
 .sec-hdr{display:flex;justify-content:space-between;align-items:center;padding:0 20px 12px;}
 .sec-title{font-size:20px;font-weight:700;color:var(--t);display:flex;align-items:center;gap:3px;}
@@ -171,13 +172,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .info-in{display:flex;gap:14px;align-items:center;padding:16px;padding-right:36px;}
 .info-img{width:76px;height:66px;border-radius:10px;background:#ddd;flex-shrink:0;display:flex;align-items:center;justify-content:center;overflow:hidden;}
 .info-title{font-size:15px;font-weight:700;color:var(--t);}
-.info-body{font-size:13.5px;color:var(--m);margin-top:4px;line-height:1.42;}
+.info-
 .info-lnk{font-size:14px;font-weight:700;color:var(--g);margin-top:8px;display:inline-block;}
 .tip{background:var(--w);border-radius:16px;margin:10px 16px 0;box-shadow:0 1px 4px rgba(0,0,0,.08);padding:16px 18px;position:relative;}
 .tip-in{display:flex;gap:12px;align-items:flex-start;padding-right:24px;}
 .tip-ico{color:var(--g);flex-shrink:0;margin-top:1px;}
 .tip-title{font-size:14.5px;font-weight:700;color:var(--t);}
-.tip-body{font-size:13.5px;color:var(--m);margin-top:4px;line-height:1.46;}
+.tip-
 .tip-lnk{font-size:14px;font-weight:700;color:var(--g);margin-top:8px;display:inline-block;}
 .edit-home{display:block;margin:16px 16px 0;width:calc(100% - 32px);background:var(--w);border:2px solid var(--g);color:var(--g);font-size:16px;font-weight:700;border-radius:14px;padding:16px;cursor:pointer;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;text-align:center;-webkit-appearance:none;}
 .edit-home:active{background:var(--gbg);}
@@ -191,7 +192,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .nb{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:none;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;padding:6px 0 0 0;cursor:pointer;}
 .nb-lbl{font-size:10px;color:var(--h);font-weight:500;margin-top:0;}
 .nb.on .nb-lbl{color:var(--g);}
-.bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:#f9f9f9 !important;border-top:.5px solid rgba(60,60,67,0.18);display:flex;z-index:100;padding-top:8px;padding-bottom:env(safe-area-inset-bottom,0px) !important;}
+.bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:#f2f2f7;border-top:.5px solid rgba(60,60,67,0.18);display:flex;z-index:100;padding-top:8px;padding-bottom:env(safe-area-inset-bottom,0px);}
 
 .ov{position:fixed;inset:0;background:rgba(0,0,0,0);z-index:500;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;transition:background .3s ease;}
 .ov.open{background:rgba(0,0,0,.48);pointer-events:all;}
@@ -206,7 +207,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .e-card-hdr{padding:13px 16px 10px;border-bottom:.5px solid var(--sep);}
 .e-card-name{font-size:12px;font-weight:700;color:var(--g);text-transform:uppercase;letter-spacing:.3px;line-height:1.4;}
 .e-card-num{font-size:12px;color:var(--h);margin-top:2px;}
-.e-card-body{padding:13px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.e-card-
 .e-card-lbl{font-size:14px;color:var(--m);font-weight:500;}
 .e-field{display:flex;align-items:center;background:#f2f2f7;border-radius:10px;padding:10px 14px;gap:4px;border:1.5px solid transparent;transition:border-color .18s,background .18s;min-width:130px;}
 .e-field:focus-within{border-color:var(--g);background:#fff;}
@@ -270,7 +271,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .txn-tabs{display:flex;border-bottom:.5px solid var(--sep);}
 .txn-tab{flex:1;background:none;border:none;padding:12px 0;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;font-size:15px;font-weight:500;color:var(--h);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;-webkit-appearance:none;}
 .txn-tab.active{color:var(--t);font-weight:700;border-bottom-color:var(--g);}
-.txn-body{flex:1;overflow-y:scroll;-webkit-overflow-scrolling:touch;overscroll-behavior-y:none;padding-bottom:calc(var(--sb) + 30px);}
+.txn-
 .txn-section-hdr{display:flex;justify-content:space-between;align-items:center;padding:18px 16px 10px;}
 .txn-section-title{font-size:18px;font-weight:700;color:var(--t);}
 .txn-search-btn{width:38px;height:38px;border-radius:50%;background:var(--w);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.1);}
@@ -311,7 +312,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 
 /* ── Nav clearance ── */
 
-
 /* ── Drag to reorder ── */
 .te-card{position:relative;transition:box-shadow .2s,transform .15s;}
 .te-card.dragging{opacity:.85;box-shadow:0 8px 28px rgba(0,0,0,.18);transform:scale(1.01);z-index:999;}
@@ -320,12 +320,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .te-drag-handle{position:absolute;right:14px;top:50%;transform:translateY(-50%);width:28px;height:36px;display:flex;align-items:center;justify-content:center;cursor:grab;color:#c7c7cc;touch-action:none;}
 .te-drag-handle:active{cursor:grabbing;}
 
+}
 
-/* ── Nav safe area fill ── */
-html{background:#f9f9f9;}
-.bnav::after{content:'';position:absolute;top:100%;left:0;right:0;height:50px;background:#f9f9f9 !important;}
-@supports not (height:100dvh){html,body,.app{height:100%;}}
-</style>
+/* ── Safe area nav fill ── */
+.bnav::after{content:'';position:absolute;left:0;right:0;top:100%;height:44px;background:#f2f2f7;}
+*{-webkit-text-size-adjust:100%;}</style>
 </head>
 <body>
 <div class="app">
@@ -559,7 +558,7 @@ html{background:#f9f9f9;}
   function fixNav() {
     var bnav = document.getElementById('bnav');
     if (!bnav) return;
-    bnav.style.background = '#f9f9f9';
+    bnav.style.background = '#f2f2f7';
     bnav.style.paddingBottom = 'env(safe-area-inset-bottom, 0px)';
     // Create/update the fill div
     var fill = document.getElementById('nav-fill');
@@ -572,7 +571,7 @@ html{background:#f9f9f9;}
     var safeArea = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--sb')) || 0;
     // Use a reliable height
     fill.style.height = Math.max(safeArea, 34) + 'px';
-    fill.style.background = '#f9f9f9';
+    fill.style.background = '#f2f2f7';
   }
   document.addEventListener('DOMContentLoaded', fixNav);
   window.addEventListener('resize', fixNav);
@@ -637,42 +636,90 @@ var txnData=[
   ],
   // Account 1: TD Every Day Savings 6684667
   [
+    {date:'Saturday March 14, 2026',txns:[
+      {name:'TIM HORTONS #3421',amt:-4.97,running:0},
+      {name:'UBER* TRIP',amt:-14.25,running:0}
+    ]},
     {date:'Friday March 13, 2026',txns:[
       {name:'UNICITY TAXI LT',amt:-33.02,running:0},
       {name:'WOWKPOW - CORYD',amt:-222.95,running:0},
-      {name:'PEOPLE CENTER PAY',amt:1972.51,running:0}
+      {name:'PEOPLE CENTER PAY',amt:1972.51,running:0},
+      {name:'SKIP THE DISHES',amt:-38.74,running:0},
+      {name:'SHOPPERS DRUG MART',amt:-22.18,running:0}
+    ]},
+    {date:'Wednesday March 11, 2026',txns:[
+      {name:'SUPERSTORE #0432',amt:-112.43,running:0},
+      {name:'SHELL SERVICE STN',amt:-67.20,running:0},
+      {name:'NETFLIX.COM',amt:-20.98,running:0}
     ]},
     {date:'Tuesday March 10, 2026',txns:[
-      {name:'RIVER QUICKIE M',amt:-4.48,running:0}
+      {name:'RIVER QUICKIE M',amt:-4.48,running:0},
+      {name:'TIM HORTONS #3421',amt:-3.75,running:0}
     ]},
     {date:'Monday March 9, 2026',txns:[
       {name:'RIVER QUICKIE M',amt:-4.48,running:0},
       {name:'WOWKPOW DONALD',amt:-22.58,running:0},
       {name:'UNICITY TAXI LT',amt:-9.08,running:0},
+      {name:'MCDONALD S #28741',amt:-12.36,running:0},
       {name:'RIVER QUICKIE M',amt:-11.72,running:0},
       {name:'UNICITY TAXI LT',amt:-10.00,running:0}
+    ]},
+    {date:'Saturday March 7, 2026',txns:[
+      {name:'COSTCO WHOLESALE',amt:-187.62,running:0},
+      {name:'CANADIAN TIRE #234',amt:-43.18,running:0},
+      {name:'ESSO STATION',amt:-72.40,running:0}
+    ]},
+    {date:'Friday March 6, 2026',txns:[
+      {name:'UBER* EATS',amt:-29.87,running:0},
+      {name:'SPOTIFY',amt:-11.99,running:0}
+    ]},
+    {date:'Thursday March 5, 2026',txns:[
+      {name:'AMAZON.CA',amt:-67.43,running:0},
+      {name:'TIM HORTONS #3421',amt:-6.25,running:0}
     ]},
     {date:'Friday February 27, 2026',txns:[
       {name:'PEOPLE CENTER PAY',amt:1972.95,running:0},
       {name:'UNICITY TAXI LT',amt:-15.50,running:0},
-      {name:'WOWKPOW - CORYD',amt:-47.49,running:0}
+      {name:'WOWKPOW - CORYD',amt:-47.49,running:0},
+      {name:'SHOPPERS DRUG MART',amt:-31.44,running:0}
+    ]},
+    {date:'Thursday February 26, 2026',txns:[
+      {name:'SUPERSTORE #0432',amt:-98.72,running:0},
+      {name:'SHELL SERVICE STN',amt:-61.80,running:0}
+    ]},
+    {date:'Tuesday February 24, 2026',txns:[
+      {name:'SKIP THE DISHES',amt:-44.21,running:0},
+      {name:'NETFLIX.COM',amt:-20.98,running:0},
+      {name:'ROGERS WIRELESS',amt:-95.00,running:0}
     ]},
     {date:'Monday February 9, 2026',txns:[
       {name:'RIVER QUICKIE M',amt:-4.48,running:0},
       {name:'CIRCLE K 00234',amt:-6.25,running:0},
-      {name:'WINNIPEG HYDRO',amt:-142.18,running:0}
+      {name:'WINNIPEG HYDRO',amt:-142.18,running:0},
+      {name:'TIM HORTONS #3421',amt:-4.97,running:0}
+    ]},
+    {date:'Saturday February 7, 2026',txns:[
+      {name:'COSTCO WHOLESALE',amt:-203.41,running:0},
+      {name:'CANADIAN TIRE #234',amt:-28.74,running:0},
+      {name:'UBER* TRIP',amt:-18.50,running:0}
     ]},
     {date:'Saturday January 31, 2026',txns:[
       {name:'PEOPLE CENTER PAY',amt:1972.95,running:0},
       {name:'MPI AUTOPAC',amt:-112.50,running:0},
-      {name:'RENT TRANSFER',amt:-800.00,running:0}
+      {name:'RENT TRANSFER',amt:-800.00,running:0},
+      {name:'SUPERSTORE #0432',amt:-134.22,running:0}
+    ]},
+    {date:'Thursday January 29, 2026',txns:[
+      {name:'SHELL SERVICE STN',amt:-58.40,running:0},
+      {name:'TIM HORTONS #3421',amt:-5.25,running:0},
+      {name:'AMAZON.CA',amt:-43.99,running:0}
     ]},
     {date:'Wednesday January 14, 2026',txns:[
       {name:'UNICITY TAXI LT',amt:-22.00,running:0},
       {name:'SUPERSTORE #0432',amt:-94.17,running:0},
-      {name:'RIVER QUICKIE M',amt:-9.66,running:0}
+      {name:'RIVER QUICKIE M',amt:-9.66,running:0},
+      {name:'MCDONALD S #28741',amt:-15.43,running:0}
     ]}
-    // sum: 1972.51-33.02-222.95-4.48-4.48-22.58-9.08-11.72-10+1972.95-15.50-47.49-4.48-6.25-142.18+1972.95-112.50-800-22-94.17-9.66 ≈ 4345.87 (recalc will set accts[1].bal)
   ],
   // Account 2: TD Every Day Chequing 6685019
   [
@@ -707,7 +754,13 @@ var txnData=[
     {date:'Thursday January 15, 2026',txns:[
       {name:'WINNERS STORES',amt:-62.49,running:0},
       {name:'BOSTON PIZZA',amt:-38.76,running:0},
-      {name:'CIRCLE K 00123',amt:-11.44,running:0}
+      {name:'CIRCLE K 00123',amt:-11.44,running:0},
+      {name:'SHELL SERVICE STN',amt:-65.20,running:0}
+    ]},
+    {date:'Monday January 12, 2026',txns:[
+      {name:'TIM HORTONS #3421',amt:-4.75,running:0},
+      {name:'UBER* TRIP',amt:-16.50,running:0},
+      {name:'SPOTIFY',amt:-11.99,running:0}
     ]}
   ],
   // Account 3: TD Every Day Savings 6751976
@@ -729,7 +782,7 @@ var txnData=[
 ];
 
 // ── localStorage persistence ──
-var STORE_KEY = 'td_app_v2';
+var STORE_KEY = 'td_app_v5';
 function saveToStorage() {
   try { localStorage.setItem(STORE_KEY, JSON.stringify({a: accts, t: txnData})); } catch(e) {}
 }
@@ -749,10 +802,10 @@ function loadFromStorage() {
 
 // ── Auto-generate deposit transactions on balance change ──
 var DEPOSIT_SOURCES = [
-  'STAKE COM INC',    // Stake.com wire transfer - real TD format
-  'KICK STREAMING',   // Kick.com creator payout - real TD format  
-  'WHOP INC',         // Whop.com marketplace payout - real TD format
-  'SKOOL COM INC'     // Skool.com community payout - real TD format
+  'EASYGO ENTMT INC', // Stake.com — pays via Easygo Entertainment (their legal payment entity)
+  'KICK STREAMING',   // Kick.com — Kick Streaming Pty Ltd creator payout
+  'WHOP INC',         // Whop.com — Whop Inc seller payout
+  'SKOOL INC'         // Skool.com — Skool Inc community payout
 ];
 function getDayName(d) {
   return ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][d.getDay()];
@@ -1255,6 +1308,35 @@ document.getElementById('te-save-btn').addEventListener('click', function() { sa
 document.getElementById('txn-edit-ov').addEventListener('click', function(e) {
   if (e.target === this) closeTxnEdit();
 });
+
+
+// ── Strip any legacy ' DEPOSIT' suffix from transaction names ──
+(function() {
+  function cleanTxnNames() {
+    for (var i = 0; i < txnData.length; i++) {
+      for (var g = 0; g < txnData[i].length; g++) {
+        for (var t = 0; t < txnData[i][g].txns.length; t++) {
+          txnData[i][g].txns[t].name = txnData[i][g].txns[t].name.replace(/ DEPOSIT$/i, '').trim();
+          // Fix old incorrect names to new correct ones
+          var nameMap = {
+            'STAKE COM INC': 'EASYGO ENTMT INC',
+            'SKOOL COM INC': 'SKOOL INC'
+          };
+          if (nameMap[txnData[i][g].txns[t].name]) {
+            txnData[i][g].txns[t].name = nameMap[txnData[i][g].txns[t].name];
+          }
+        }
+      }
+    }
+  }
+  // Run after data is loaded
+  var _origLoad = loadFromStorage;
+  loadFromStorage = function() {
+    var result = _origLoad();
+    cleanTxnNames();
+    return result;
+  };
+})();
 
 if (!loadFromStorage()) { for (var _ii = 0; _ii < accts.length; _ii++) { recalcRunningBalances(_ii); } } else { for (var _ii = 0; _ii < accts.length; _ii++) { recalcRunningBalances(_ii); } } render();
 </script>
