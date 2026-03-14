@@ -187,24 +187,31 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .help-item{display:flex;flex-direction:column;align-items:center;gap:9px;cursor:pointer;}
 .help-circle{width:58px;height:58px;border-radius:50%;border:.5px solid var(--sep);background:var(--w);display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.07);}
 .help-lbl{font-size:12.5px;font-weight:600;color:var(--t);}
-.bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:#fff;border-top:.5px solid var(--sep);display:flex;z-index:100;padding:8px 0 0;}
+.bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:#fff;border-top:.5px solid var(--sep);display:flex;z-index:100;padding:8px 0 0;padding-bottom:env(safe-area-inset-bottom,0px);}
 .nb{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;padding:0;cursor:pointer;}
 .nb-lbl{font-size:10px;color:var(--h);font-weight:500;margin-top:1px;}
 .nb.on .nb-lbl{color:var(--g);}
 /* ── Responsive / safe-area fixes ── */
-html { height: 100%; }
-body { height: 100%; height: 100dvh; }
-.app { height: 100%; height: 100dvh; }
-/* Bottom nav: tabs sit above safe area, background fills behind home indicator */
-.bnav {
-  padding-top: 8px;
-  padding-bottom: env(safe-area-inset-bottom, 0px);
-}
-/* Scrollable body clears the nav bar height (58px tabs + safe area) */
+html, body { height: 100%; }
+@supports (height: 100dvh) { html, body, .app { height: 100dvh; } }
+/* Nav icons+labels area */
+.nb { padding-bottom: 4px; }
+/* Body scroll clearance: icon(24) + label(12) + padding(8+4) + safe-area */
 .body {
-  padding-bottom: calc(58px + env(safe-area-inset-bottom, 0px) + 8px);
+  padding-bottom: calc(52px + env(safe-area-inset-bottom, 20px));
 }
 * { -webkit-text-size-adjust: 100%; }
+/* Extend white nav background behind home indicator bar on all iPhones */
+.bnav::after {
+  content: '';
+  position: absolute;
+  bottom: calc(-1 * env(safe-area-inset-bottom, 34px));
+  left: 0;
+  right: 0;
+  height: env(safe-area-inset-bottom, 34px);
+  background: #fff;
+  pointer-events: none;
+}
 
 .ov{position:fixed;inset:0;background:rgba(0,0,0,0);z-index:500;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;transition:background .3s ease;}
 .ov.open{background:rgba(0,0,0,.48);pointer-events:all;}
