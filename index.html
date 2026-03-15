@@ -138,12 +138,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .as-cancel:active{opacity:.7;}
 .toast{position:fixed;bottom:calc(var(--sb) + 96px);left:50%;transform:translateX(-50%) translateY(8px);background:rgba(30,30,30,.92);backdrop-filter:blur(10px);color:#fff;font-size:14px;font-weight:600;padding:12px 24px;border-radius:50px;opacity:0;pointer-events:none;transition:opacity .22s,transform .22s;white-space:nowrap;z-index:700;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-.install-bar{display:none;position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;z-index:999;background:#fff;border-top:1px solid rgba(0,0,0,.1);flex-direction:column;padding:14px 16px max(env(safe-area-inset-bottom,0px),20px);box-shadow:0 -4px 20px rgba(0,0,0,.12);}
-.ib-title{font-size:15px;font-weight:700;color:#000;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
-.ib-icon{width:32px;height:32px;border-radius:7px;background:var(--g);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.ib-steps{display:flex;flex-direction:column;gap:8px;margin-bottom:12px;}
-.ib-step{font-size:13px;color:#444;display:flex;align-items:center;gap:8px;line-height:1.4;}
-.ib-dismiss{background:none;border:none;color:var(--h);font-size:13px;font-weight:600;cursor:pointer;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;padding:4px 0;text-align:center;width:100%;}
+
+
+
+
+
+
 
 
 
@@ -480,14 +480,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 </div>
 
 
-<div class="install-bar" id="install-bar">
-  <div class="ib-title"><div class="ib-icon"><svg width="20" height="20" viewBox="0 0 52 52" fill="none"><rect x="4" y="8" width="20" height="6" rx="1" fill="white"/><rect x="11" y="8" width="6" height="28" rx="1" fill="white"/><rect x="27" y="8" width="6" height="28" rx="1" fill="white"/><rect x="27" y="8" width="14" height="6" rx="1" fill="white"/><rect x="27" y="30" width="14" height="6" rx="1" fill="white"/></svg></div>Add TD to Home Screen</div>
-  <div class="ib-steps">
-    <div class="ib-step"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="2" stroke-linecap="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>Tap <strong>Share</strong> at the bottom of Safari</div>
-    <div class="ib-step"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Tap <strong>"Add to Home Screen"</strong> then <strong>Add</strong></div>
-  </div>
-  <button class="ib-dismiss" id="ib-dismiss">Dismiss</button>
-</div>
 
 <div class="toast" id="toast"></div>
 
@@ -507,8 +499,6 @@ setPad();window.addEventListener('resize',setPad);setTimeout(setPad,100);setTime
 
 // ── Install banner ──
 var standalone=window.navigator.standalone===true||window.matchMedia('(display-mode:standalone)').matches;
-if(/iPhone|iPad|iPod/.test(navigator.userAgent)&&!standalone)document.getElementById('install-bar').style.display='flex';
-document.getElementById('ib-dismiss').onclick=function(){document.getElementById('install-bar').style.display='none';};
 
 // ── Account data ──
 var accts=[
