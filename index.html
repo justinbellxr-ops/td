@@ -148,8 +148,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 
 
 
-.txn-nav-top{display:flex;align-items:center;padding:10px 0 4px;position:relative;}
-.txn-back{background:none;border:none;color:var(--g);font-size:15px;font-weight:600;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;cursor:pointer;display:flex;align-items:center;gap:2px;padding:4px 0;-webkit-appearance:none;z-index:1;}
+.txn-nav-top{display:flex;align-items:center;padding:max(var(--st),16px) 16px 4px;position:relative;}
+.txn-back{background:none;border:none;color:var(--g);font-size:15px;font-weight:600;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;cursor:pointer;display:flex;align-items:center;gap:2px;padding:4px 8px 4px 0;-webkit-appearance:none;z-index:1;min-width:44px;}
 .txn-back svg{flex-shrink:0;}
 .txn-nav-title{font-size:17px;font-weight:600;color:var(--t);text-align:center;position:absolute;left:0;right:0;pointer-events:none;}
 .txn-dots-btn{background:none;border:none;color:#c7c7cc;font-size:22px;letter-spacing:3px;cursor:pointer;padding:4px 0;line-height:1;-webkit-appearance:none;margin-left:auto;z-index:1;}
@@ -165,7 +165,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .txn-tabs{display:flex;border-bottom:.5px solid var(--sep);}
 .txn-tab{flex:1;background:none;border:none;padding:12px 0;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;font-size:15px;font-weight:500;color:var(--h);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;-webkit-appearance:none;}
 .txn-tab.active{color:var(--t);font-weight:700;border-bottom-color:var(--g);}
-.txn-body{flex:1;overflow-y:scroll;-webkit-overflow-scrolling:touch;overscroll-behavior-y:none;padding-bottom:calc(var(--sb) + 30px);}
+.txn-body{flex:1;overflow-y:scroll;-webkit-overflow-scrolling:touch;overscroll-behavior-y:none;padding-bottom:30px;}
 .txn-section-hdr{display:flex;justify-content:space-between;align-items:center;padding:18px 16px 10px;}
 .txn-section-title{font-size:18px;font-weight:700;color:var(--t);}
 .txn-search-btn{width:38px;height:38px;border-radius:50%;background:var(--w);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.1);}
@@ -205,13 +205,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .te-add-month-btn:active{opacity:.85;}
 
 /* ── Nav bar ── */
-.bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:#f9f9f9;border-top:.5px solid rgba(60,60,67,0.18);display:flex;align-items:flex-start;z-index:100;padding-top:6px;padding-bottom:34px;}
+.bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:#f9f9f9;border-top:.5px solid rgba(60,60,67,0.18);display:flex;align-items:flex-start;z-index:600;padding-top:6px;padding-bottom:34px;}
 .nb{flex:1;display:flex;flex-direction:column;align-items:center;gap:10px;background:none;border:none;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;padding:0;cursor:pointer;}
 .nb-lbl{font-size:10px;color:#747474;font-weight:400;line-height:1.1;display:block;}
 .nb.on .nb-lbl{color:#272727;font-weight:600;}
-.txn-ov{position:fixed;top:0;left:0;right:0;bottom:50px;background:rgba(0,0,0,0);z-index:550;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;transition:background .3s ease;}
+.txn-ov{position:fixed;inset:0;background:rgba(0,0,0,0);z-index:550;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;transition:background .3s ease;}
 .txn-ov.open{background:rgba(0,0,0,.52);pointer-events:all;}
-.txn-drawer{width:100%;max-width:430px;background:#f2f2f7;border-radius:22px 22px 0 0;transform:translateY(105%);transition:transform .4s cubic-bezier(.32,.72,0,1);height:100%;display:flex;flex-direction:column;overflow:hidden;}
+.txn-drawer{width:100%;max-width:430px;background:#f2f2f7;border-radius:22px 22px 0 0;transform:translateY(105%);transition:transform .4s cubic-bezier(.32,.72,0,1);height:calc(100% - 86px);display:flex;flex-direction:column;overflow:hidden;}
 .txn-ov.open .txn-drawer{transform:translateY(0);}
 
 /* ── Drag to reorder ── */
@@ -428,8 +428,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
     <div class="txn-nav">
       <div class="txn-nav-top">
         <button class="txn-back" id="txn-back">
-          <svg width="9" height="15" viewBox="0 0 9 15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 1 1 7.5 8 14"/></svg>
-          Banking
+          <svg width="11" height="18" viewBox="0 0 9 15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 1 1 7.5 8 14"/></svg>
         </button>
         <div class="txn-nav-title" id="txn-nav-title">Account</div>
         <button class="txn-dots-btn" id="txn-dots-btn">···</button>
