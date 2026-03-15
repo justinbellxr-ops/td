@@ -58,7 +58,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .hdr.scrolled .pill{box-shadow:0 1px 4px rgba(0,0,0,.08);}
 .pill:active{opacity:.8;}
 .pill-ico{color:var(--g);display:flex;align-items:center;flex-shrink:0;}
-.body{flex:1;overflow-y:scroll;-webkit-overflow-scrolling:touch;overscroll-behavior-y:none;padding-bottom:calc(56px + env(safe-area-inset-bottom,0px));}
+.body{flex:1;overflow-y:scroll;-webkit-overflow-scrolling:touch;overscroll-behavior-y:none;padding-bottom:84px;}
 .sec{margin-top:24px;}
 .sec-hdr{display:flex;justify-content:space-between;align-items:center;padding:0 20px 12px;}
 .sec-title{font-size:20px;font-weight:700;color:#1a1a1a;display:flex;align-items:center;gap:3px;}
@@ -118,7 +118,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .help-item{display:flex;flex-direction:column;align-items:center;gap:9px;cursor:pointer;}
 .help-circle{width:58px;height:58px;border-radius:50%;border:.5px solid var(--sep);background:var(--w);display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.07);}
 .help-lbl{font-size:12.5px;font-weight:600;color:var(--t);}
-.bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:#f9f9f9;border-top:.5px solid rgba(60,60,67,0.18);display:flex;align-items:flex-start;z-index:100;padding-top:10px;padding-bottom:env(safe-area-inset-bottom,0px);}
+.bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:#f9f9f9;border-top:.5px solid rgba(60,60,67,0.18);display:flex;align-items:flex-start;z-index:100;padding-top:6px;padding-bottom:34px;}
 .nb{flex:1;display:flex;flex-direction:column;align-items:center;gap:10px;background:none;border:none;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;padding:0;cursor:pointer;}
 .nb-lbl{font-size:10px;color:var(--h);font-weight:400;line-height:1.1;}
 .nb.on .nb-lbl{color:var(--g);}
@@ -1365,56 +1365,8 @@ if(!loadFromStorage()){
 
 render();
 
-// ── Safe area nav fix ── 
-(function(){
-  function applyNavSafeArea(){
-    var bnav = document.getElementById('bnav');
-    if(!bnav) return;
-    // Read the computed safe-area-inset-bottom  
-    var sab = parseInt(getComputedStyle(document.documentElement)
-      .getPropertyValue('--sb').trim()) || 0;
-    // Also try reading directly via a test element
-    var tester = document.createElement('div');
-    tester.style.cssText = 'position:fixed;bottom:0;height:env(safe-area-inset-bottom,0px);pointer-events:none;visibility:hidden;';
-    document.body.appendChild(tester);
-    var measured = tester.offsetHeight || 0;
-    document.body.removeChild(tester);
-    // Use whichever is larger, minimum 0
-    var pb = Math.max(sab, measured, 0);
-    bnav.style.paddingBottom = pb + 'px';
-    // Also update body padding
-    var bodyEl = document.getElementById('body');
-    if(bodyEl) bodyEl.style.paddingBottom = (pb + 56) + 'px';
-  }
-  // Run immediately, then again after a tick (env() needs a frame)
-  applyNavSafeArea();
-  requestAnimationFrame(applyNavSafeArea);
-  setTimeout(applyNavSafeArea, 100);
-  window.addEventListener('resize', applyNavSafeArea);
-})();
 
 
-// ── Nav safe area: read real rendered value after paint ──
-(function(){
-  var nav = document.getElementById('bnav');
-  var bodyEl = document.getElementById('body');
-  function fix(){
-    if(!nav) return;
-    // Force a reflow so env() values are fully resolved
-    var _ = nav.offsetHeight;
-    // Read computed padding-bottom (this is the env() resolved value)
-    var computed = parseFloat(getComputedStyle(nav).paddingBottom) || 0;
-    // On iPhone X/11/12/13/14/15: env() = 34px. On older/no-notch: 0px.
-    // We want AT LEAST 0px (no forced minimum — let the device decide)
-    nav.style.paddingBottom = computed + 'px';
-    if(bodyEl) bodyEl.style.paddingBottom = (computed + 56) + 'px';
-  }
-  // Run after CSS is painted
-  requestAnimationFrame(function(){ requestAnimationFrame(fix); });
-  setTimeout(fix, 50);
-  setTimeout(fix, 300);
-  window.addEventListener('resize', fix);
-})();
 
 </script>
 </body>
