@@ -210,8 +210,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .nb-lbl{font-size:10px;color:#747474;font-weight:400;line-height:1.1;display:block;}
 .nb.on .nb-lbl{color:#272727;font-weight:600;}
 .txn-ov{position:fixed;inset:0;background:rgba(0,0,0,0);z-index:550;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;transition:background .3s ease;}
-.txn-ov.open{background:rgba(0,0,0,.52);pointer-events:all;}
-.txn-drawer{width:100%;max-width:430px;background:#f2f2f7;border-radius:22px 22px 0 0;transform:translateY(105%);transition:transform .4s cubic-bezier(.32,.72,0,1);height:calc(100% - 86px);display:flex;flex-direction:column;overflow:hidden;}
+.txn-ov.open{background:rgba(0,0,0,0);pointer-events:all;}
+.txn-drawer{width:100%;max-width:430px;background:#f2f2f7;border-radius:0;transform:translateY(105%);transition:transform .4s cubic-bezier(.32,.72,0,1);height:100%;display:flex;flex-direction:column;overflow:hidden;}
 .txn-ov.open .txn-drawer{transform:translateY(0);}
 
 /* ── Drag to reorder ── */
