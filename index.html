@@ -205,8 +205,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 
 /* ── Nav bar ── */
 .nb{flex:1;display:flex;flex-direction:column;align-items:center;gap:10px;background:none;border:none;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;padding:0;cursor:pointer;}
-.nb-lbl{font-size:10px;color:#747474;font-weight:400;line-height:1.1;display:block;}
-.nb.on .nb-lbl{color:#272727;font-weight:600;}
+.nb-lbl{font-size:10px;color:#747474;font-weight:400;line-height:1.1;display:block;}.nb.on .nb-lbl{color:#272727;font-weight:600;}
+.nb.on 
 .txn-ov{position:fixed;inset:0;background:rgba(0,0,0,0);z-index:550;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;transition:background .3s ease;}
 .txn-ov.open{background:rgba(0,0,0,.52);pointer-events:all;}
 .txn-drawer{width:100%;max-width:430px;background:#f2f2f7;border-radius:22px 22px 0 0;transform:translateY(105%);transition:transform .4s cubic-bezier(.32,.72,0,1);height:calc(100% - 86px);display:flex;flex-direction:column;overflow:hidden;}
@@ -263,9 +263,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 
 /* ── Nav bar ── */
 .bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:#f9f9f9;border-top:.5px solid rgba(60,60,67,0.18);display:flex;align-items:flex-start;z-index:800;padding-top:6px;padding-bottom:0;}
-.nb{flex:1;display:flex;flex-direction:column;align-items:center;gap:10px;background:none;border:none;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;padding:0;cursor:pointer;}
-.nb-lbl{font-size:10px;color:#747474;font-weight:400;line-height:1.1;display:block;}
-.nb.on .nb-lbl{color:#272727;font-weight:600;}
+
+
+.nb.on 
 .body{flex:1;overflow-y:scroll;-webkit-overflow-scrolling:touch;overscroll-behavior-y:none;padding-bottom:90px;}
 </style>
 </head>
@@ -687,7 +687,7 @@ function showToast(msg){var t=document.getElementById('toast');t.textContent=msg
 // ── Action sheet ──
 function openSheet(){document.getElementById('as-ov').classList.add('open');}
 function closeSheet(){document.getElementById('as-ov').classList.remove('open');}
-document.getElementById('edit-btn').addEventListener('click',openSheet);
+tap('edit-btn', openSheet);
 document.getElementById('as-cancel').addEventListener('click',closeSheet);
 document.getElementById('as-ov').addEventListener('click',function(e){if(e.target===this)closeSheet();});
 document.getElementById('as-balances').addEventListener('click',function(){closeSheet();setTimeout(openDrawer,60);});
