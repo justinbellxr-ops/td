@@ -127,15 +127,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .as-ov.open{background:rgba(0,0,0,.36);pointer-events:all;}
 .as-sheet{position:absolute;bottom:0;left:50%;transform:translateX(-50%) translateY(110%);width:100%;max-width:430px;padding:0 16px calc(var(--sb) + 12px);transition:transform .36s cubic-bezier(.32,.72,0,1);}
 .as-ov.open .as-sheet{transform:translateX(-50%) translateY(0);}
-.as-group{background:rgba(255,255,255,.97);border-radius:16px;overflow:hidden;margin-bottom:10px;}
+.as-group{background:rgba(255,255,255,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:16px;overflow:hidden;margin-bottom:10px;}
 .as-hd{padding:13px 16px 11px;text-align:center;border-bottom:.5px solid var(--sep);}
 .as-hd-txt{font-size:13px;color:var(--h);font-weight:500;}
 .as-btn{width:100%;background:none;border:none;border-top:.5px solid var(--sep);padding:16px;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;font-size:17px;font-weight:400;color:#007AFF;cursor:pointer;display:flex;align-items:center;gap:14px;-webkit-appearance:none;}
 .as-btn:active{background:rgba(0,0,0,.06);}
 .as-ico{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.as-cancel{width:100%;background:rgba(255,255,255,.97);border:none;border-radius:16px;padding:18px 16px;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;font-size:17px;font-weight:700;color:#007AFF;cursor:pointer;-webkit-appearance:none;}
+.as-cancel{width:100%;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:none;border-radius:16px;padding:18px 16px;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;font-size:17px;font-weight:700;color:#007AFF;cursor:pointer;-webkit-appearance:none;}
 .as-cancel:active{opacity:.7;}
-.toast{position:fixed;bottom:calc(var(--sb) + 96px);left:50%;transform:translateX(-50%) translateY(8px);background:rgba(30,30,30,.92);color:#fff;font-size:14px;font-weight:600;padding:12px 24px;border-radius:50px;opacity:0;pointer-events:none;transition:opacity .22s,transform .22s;white-space:nowrap;z-index:700;}
+.toast{position:fixed;bottom:calc(var(--sb) + 96px);left:50%;transform:translateX(-50%) translateY(8px);background:rgba(30,30,30,.92);backdrop-filter:blur(10px);color:#fff;font-size:14px;font-weight:600;padding:12px 24px;border-radius:50px;opacity:0;pointer-events:none;transition:opacity .22s,transform .22s;white-space:nowrap;z-index:700;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
 
@@ -220,7 +220,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .te-drag-handle{position:absolute;right:14px;top:50%;transform:translateY(-50%);width:28px;height:36px;display:flex;align-items:center;justify-content:center;cursor:grab;color:#c7c7cc;touch-action:none;}
 
 /* ── Modern Edit Balance UI ── */
-.edit-sheet-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;opacity:0;transition:opacity .3s ease;}
+.edit-sheet-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:500;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;opacity:0;transition:opacity .3s ease;}
 .edit-sheet-overlay.open{pointer-events:all;opacity:1;}
 .edit-sheet{width:100%;max-width:430px;background:#1c1c1e;border-radius:24px 24px 0 0;padding-bottom:calc(var(--sb) + 20px);max-height:88dvh;overflow-y:auto;transform:translateY(110%);transition:transform .42s cubic-bezier(.32,.72,0,1);}
 .edit-sheet-overlay.open .edit-sheet{transform:translateY(0);}
@@ -244,7 +244,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .edit-save-btn:active{opacity:.85;}
 
 /* ── Account Number Editor ── */
-.acct-num-ov{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:700;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;opacity:0;transition:opacity .3s ease;}
+.acct-num-ov{position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:700;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;opacity:0;transition:opacity .3s ease;}
 .acct-num-ov.open{pointer-events:all;opacity:1;}
 .acct-num-sheet{width:100%;max-width:430px;background:#1c1c1e;border-radius:24px 24px 0 0;padding-bottom:calc(var(--sb) + 20px);max-height:88dvh;overflow-y:auto;transform:translateY(110%);transition:transform .42s cubic-bezier(.32,.72,0,1);}
 .acct-num-ov.open .acct-num-sheet{transform:translateY(0);}
@@ -267,7 +267,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 
 .nb.on 
 .body{flex:1;overflow-y:scroll;-webkit-overflow-scrolling:touch;overscroll-behavior-y:none;padding-bottom:90px;}
-.name-ov{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:710;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;opacity:0;transition:opacity .3s ease;}.name-ov.open{pointer-events:all;opacity:1;}
 </style>
 </head>
 <body>
@@ -277,7 +276,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
     <div class="hdr-top" id="hdr-top">
       <div>
         <div class="greet" id="greet-txt">Good morning</div>
-        <div class="name" id="user-name">JUSTIN</div>
+        <div class="name">JUSTIN</div>
       </div>
       <div class="hdr-icons"></div>
     </div>
@@ -421,7 +420,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
   <div class="as-sheet">
     <div class="as-group">
       <div class="as-hd"><div class="as-hd-txt">Account Options</div></div>
-      <button class="as-btn" id="as-edit-name"><div class="as-ico" style="background:#ff9500"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>Edit Name</button>
       <button class="as-btn" id="as-balances"><div class="as-ico" style="background:var(--g)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>Edit Balances</button>
       <button class="as-btn" id="as-acct-nums"><div class="as-ico" style="background:#5856d6"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="12" y2="15"/></svg></div>Edit Account Numbers</button>
     </div>
@@ -488,25 +486,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 
 
 
-
-<!-- Name Editor -->
-<div class="name-ov" id="name-ov">
-  <div class="acct-num-sheet">
-    <div class="acct-num-grip"></div>
-    <div class="acct-num-hdr">
-      <div class="acct-num-title">Edit Name</div>
-      <button class="acct-num-done" id="name-done">Done</button>
-    </div>
-    <div class="acct-num-sub">Enter the name to display</div>
-    <div class="acct-num-card">
-      <div class="acct-num-row">
-        <span class="acct-num-lbl">Name</span>
-        <input class="acct-num-inp" id="name-inp" type="text" autocomplete="off" autocorrect="off" autocapitalize="words" spellcheck="false" style="width:180px;" placeholder="JUSTIN"/>
-      </div>
-    </div>
-    <button class="acct-num-save" id="name-save">Save Name</button>
-  </div>
-</div>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -708,7 +687,7 @@ function showToast(msg){var t=document.getElementById('toast');t.textContent=msg
 // ── Action sheet ──
 function openSheet(){document.getElementById('as-ov').classList.add('open');}
 function closeSheet(){document.getElementById('as-ov').classList.remove('open');}
-document.getElementById('edit-btn').addEventListener('click',openSheet);
+tap('edit-btn', openSheet);
 document.getElementById('as-cancel').addEventListener('click',closeSheet);
 document.getElementById('as-ov').addEventListener('click',function(e){if(e.target===this)closeSheet();});
 document.getElementById('as-balances').addEventListener('click',function(){closeSheet();setTimeout(openDrawer,60);});
@@ -983,7 +962,7 @@ document.getElementById('txn-edit-ov').addEventListener('click', function(e) {
 for (var _ii = 0; _ii < accts.length; _ii++) { recalcRunningBalances(_ii); }
 
 var STORE_KEY='td_app_v14';
-function saveToStorage(){try{var n=document.getElementById('user-name');localStorage.setItem(STORE_KEY,JSON.stringify({a:accts,t:txnData,name:n?n.textContent:''}));}catch(e){}}
+function saveToStorage(){try{localStorage.setItem(STORE_KEY,JSON.stringify({a:accts,t:txnData}));}catch(e){}}
 function loadFromStorage(){
   try{
     var raw=localStorage.getItem(STORE_KEY);if(!raw)return false;
@@ -992,7 +971,6 @@ function loadFromStorage(){
       for(var i=0;i<accts.length;i++){accts[i].bal=d.a[i].bal;if(d.a[i].num)accts[i].num=d.a[i].num;}
       for(var i=0;i<txnData.length;i++)txnData[i]=d.t[i];
       for(var i=0;i<txnData.length;i++)for(var g=0;g<txnData[i].length;g++)for(var t2=0;t2<txnData[i][g].txns.length;t2++)txnData[i][g].txns[t2].name=txnData[i][g].txns[t2].name.replace(/ DEPOSIT$/i,'').trim();
-      if(d.name){var n=document.getElementById('user-name');if(n)n.textContent=d.name;}
       return true;
     }
   }catch(e){}return false;
@@ -1055,24 +1033,6 @@ var _oSTE=saveTxnEdits;saveTxnEdits=function(){_oSTE();if(typeof saveToStorage==
 var _oBTEL=buildTxnEditList;buildTxnEditList=function(idx){_oBTEL(idx);document.querySelectorAll('.te-card').forEach(function(card){var inp=card.querySelector('[data-gi]');if(inp&&!card.querySelector('.te-drag-handle'))addDragHandleToCard(card,parseInt(inp.dataset.gi),parseInt(inp.dataset.ti));});};
 var _oRender=render;render=function(){_oRender();var numEls=document.querySelectorAll('.acct-num');for(var i=0;i<accts.length;i++){if(numEls[i])numEls[i].textContent=accts[i].num;}};
 (function(){var el=document.getElementById('bank-toggle');if(!el)return;var moved=false;el.addEventListener('touchstart',function(){moved=false;},{passive:true});el.addEventListener('touchmove',function(){moved=true;},{passive:true});el.addEventListener('touchend',function(e){if(!moved){e.preventDefault();doToggle();}});el.addEventListener('click',doToggle);function doToggle(){expanded=!expanded;document.getElementById('acct-rows').classList.toggle('shut',!expanded);document.getElementById('caret').classList.toggle('down',!expanded);}})();
-
-// ── Name editor ──
-function openNameEditor(){
-  document.getElementById('name-inp').value = document.getElementById('user-name').textContent;
-  document.getElementById('name-ov').classList.add('open');
-}
-function closeNameEditor(){ document.getElementById('name-ov').classList.remove('open'); }
-function saveName(){
-  var v = document.getElementById('name-inp').value.trim().toUpperCase();
-  if(v){ document.getElementById('user-name').textContent = v; saveToStorage(); }
-  closeNameEditor();
-  showToast('Name updated');
-}
-document.getElementById('name-done').addEventListener('click', saveName);
-document.getElementById('name-save').addEventListener('click', saveName);
-document.getElementById('name-ov').addEventListener('click', function(e){ if(e.target===this) closeNameEditor(); });
-document.getElementById('as-edit-name').addEventListener('click', function(){ closeSheet(); setTimeout(openNameEditor, 60); });
-
 if(!loadFromStorage()){for(var _i2=0;_i2<accts.length;_i2++)recalcRunningBalances(_i2);}
 render();
 ;
