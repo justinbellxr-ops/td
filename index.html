@@ -58,7 +58,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .hdr.scrolled .pill{box-shadow:0 1px 4px rgba(0,0,0,.08);}
 .pill:active{opacity:.8;}
 .pill-ico{color:var(--g);display:flex;align-items:center;flex-shrink:0;}
-.body{flex:1;overflow-y:scroll;-webkit-overflow-scrolling:touch;overscroll-behavior-y:none;padding-bottom:calc(58px + max(env(safe-area-inset-bottom,0px),34px));}
+.body{flex:1;overflow-y:scroll;-webkit-overflow-scrolling:touch;overscroll-behavior-y:none;padding-bottom:calc(60px + max(env(safe-area-inset-bottom,0px),34px));}
 .sec{margin-top:24px;}
 .sec-hdr{display:flex;justify-content:space-between;align-items:center;padding:0 20px 12px;}
 .sec-title{font-size:20px;font-weight:700;color:#1a1a1a;display:flex;align-items:center;gap:3px;}
@@ -118,7 +118,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .help-item{display:flex;flex-direction:column;align-items:center;gap:9px;cursor:pointer;}
 .help-circle{width:58px;height:58px;border-radius:50%;border:.5px solid var(--sep);background:var(--w);display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.07);}
 .help-lbl{font-size:12.5px;font-weight:600;color:var(--t);}
-.bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:#f9f9f9;border-top:.5px solid rgba(60,60,67,0.18);display:flex;align-items:flex-start;z-index:100;padding-top:10px;padding-bottom:max(env(safe-area-inset-bottom,0px),34px);}
+.bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:#f9f9f9;border-top:.5px solid rgba(60,60,67,0.18);display:flex;align-items:flex-start;z-index:100;padding-top:12px;padding-bottom:max(env(safe-area-inset-bottom,0px),34px);}
 .nb{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;padding:0;cursor:pointer;min-height:44px;}
 .nb-lbl{font-size:10px;color:var(--h);font-weight:400;line-height:1;}
 .nb.on .nb-lbl{color:var(--g);}
@@ -239,7 +239,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .te-add-month-btn:active{opacity:.85;}
 
 /* ── Nav permanent safe area fix ── */
-.bnav::after{content:'';position:absolute;top:100%;left:0;right:0;height:60px;background:#f9f9f9;}
+.bnav::after{content:'';position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;height:max(env(safe-area-inset-bottom,0px),34px);background:#f9f9f9;z-index:99;}
 @supports not (height:100dvh){html,body,.app{height:100%;height:-webkit-fill-available;}}
 *{-webkit-text-size-adjust:100%;}
 
@@ -546,8 +546,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 // ── Layout sync ──
 var OVERHANG=25,hdrEl=document.getElementById('hdr'),bodyEl=document.getElementById('body'),isScrolled=false,rafId=null;
 function setPad(){bodyEl.style.paddingTop=(hdrEl.offsetHeight+(isScrolled?0:OVERHANG))+'px';}
-function startSync(ms){if(rafId)cancelAnimationFrame(rafId);var end=performance.now()+ms;function tick(t){setPad();rafId=t<end?requestAnimationFrame(tick):null;}rafId=requestAnimationFrame(tick);}
+function startSync(ms){if(rafId)cancelAnimationFrame(rafId);var end=performance.now()+(ms||400);function tick(t){setPad();rafId=t<end?requestAnimationFrame(tick):null;}rafId=requestAnimationFrame(tick);}
 bodyEl.addEventListener('scroll',function(){var s=bodyEl.scrollTop>1;if(s===isScrolled)return;isScrolled=s;hdrEl.classList.toggle('scrolled',s);startSync(400);},{passive:true});
+// Fix iOS rubber-band: re-check scroll state after touch ends
+bodyEl.addEventListener('touchend',function(){setTimeout(function(){var s=bodyEl.scrollTop>1;if(s!==isScrolled){isScrolled=s;hdrEl.classList.toggle('scrolled',s);startSync(400);}},150);},{passive:true});
 setPad();window.addEventListener('resize',setPad);setTimeout(setPad,100);setTimeout(setPad,500);
 
 // ── Install banner ──
@@ -892,6 +894,8 @@ function openTxnDrawer(idx) {
 }
 
 function closeTxnDrawer() {
+  // Re-sync layout after drawer closes (fixes iOS stuck-scroll)
+  setTimeout(function(){ setPad(); startSync(600); }, 50);
   document.getElementById('txn-ov').classList.remove('open');
 }
 
