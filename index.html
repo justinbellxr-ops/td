@@ -34,7 +34,7 @@ var tm=document.createElement('meta');tm.name='theme-color';tm.content='#008a00'
 :root{
   --g:#008a00;--gbg:#edf7ed;--w:#fff;--bg:#f3f3f3;
   --t:#000;--m:#3c3c43;--h:#8e8e93;--sep:rgba(60,60,67,0.18);--red:#d0021b;
-  --st:env(safe-area-inset-top,0px);--sb:env(safe-area-inset-bottom,0px);
+  --st:env(safe-area-inset-top,0px);--sb:0px;
   --ph:50px;
   --po:25px;
 }
@@ -58,7 +58,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .hdr.scrolled .pill{box-shadow:0 1px 4px rgba(0,0,0,.08);}
 .pill:active{opacity:.8;}
 .pill-ico{color:var(--g);display:flex;align-items:center;flex-shrink:0;}
-.body{flex:1;overflow-y:scroll;-webkit-overflow-scrolling:touch;overscroll-behavior-y:none;padding-bottom:84px;}
+.body{flex:1;overflow-y:scroll;-webkit-overflow-scrolling:touch;overscroll-behavior-y:none;padding-bottom:60px;}
 .sec{margin-top:24px;}
 .sec-hdr{display:flex;justify-content:space-between;align-items:center;padding:0 20px 12px;}
 .sec-title{font-size:20px;font-weight:700;color:#1a1a1a;display:flex;align-items:center;gap:3px;}
@@ -118,7 +118,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .help-item{display:flex;flex-direction:column;align-items:center;gap:9px;cursor:pointer;}
 .help-circle{width:58px;height:58px;border-radius:50%;border:.5px solid var(--sep);background:var(--w);display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.07);}
 .help-lbl{font-size:12.5px;font-weight:600;color:var(--t);}
-.bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:#f9f9f9;border-top:.5px solid rgba(60,60,67,0.18);display:flex;align-items:flex-start;z-index:100;padding-top:6px;padding-bottom:34px;}
+.bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:#f9f9f9;border-top:.5px solid rgba(60,60,67,0.18);display:flex;align-items:flex-start;z-index:100;padding-top:6px;padding-bottom:0;}
 .nb{flex:1;display:flex;flex-direction:column;align-items:center;gap:10px;background:none;border:none;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;padding:0;cursor:pointer;}
 .nb-lbl{font-size:10px;color:var(--h);font-weight:400;line-height:1.1;}
 .nb.on .nb-lbl{color:var(--g);}
@@ -158,7 +158,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .as-cancel:active{opacity:.7;}
 .toast{position:fixed;bottom:calc(var(--sb) + 96px);left:50%;transform:translateX(-50%) translateY(8px);background:rgba(30,30,30,.92);backdrop-filter:blur(10px);color:#fff;font-size:14px;font-weight:600;padding:12px 24px;border-radius:50px;opacity:0;pointer-events:none;transition:opacity .22s,transform .22s;white-space:nowrap;z-index:700;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-.install-bar{display:none;position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;z-index:999;background:#fff;border-top:1px solid rgba(0,0,0,.1);flex-direction:column;padding:14px 16px max(env(safe-area-inset-bottom,0px),20px);box-shadow:0 -4px 20px rgba(0,0,0,.12);}
+.install-bar{display:none;position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;z-index:999;background:#fff;border-top:1px solid rgba(0,0,0,.1);flex-direction:column;padding:14px 16px max(0px,20px);box-shadow:0 -4px 20px rgba(0,0,0,.12);}
 .ib-title{font-size:15px;font-weight:700;color:#000;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
 .ib-icon{width:32px;height:32px;border-radius:7px;background:var(--g);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .ib-steps{display:flex;flex-direction:column;gap:8px;margin-bottom:12px;}
@@ -239,7 +239,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .te-add-month-btn:active{opacity:.85;}
 
 /* ── Nav permanent safe area fix ── */
-.bnav::after{content:'';position:absolute;top:100%;left:0;right:0;height:80px;background:#f9f9f9;}
+
 @supports not (height:100dvh){html,body,.app{height:100%;height:-webkit-fill-available;}}
 *{-webkit-text-size-adjust:100%;}
 
@@ -1144,7 +1144,7 @@ document.getElementById('txn-edit-ov').addEventListener('click', function(e) {
 for (var _ii = 0; _ii < accts.length; _ii++) { recalcRunningBalances(_ii); }
 
 // ── localStorage persistence ──
-var STORE_KEY = 'td_app_v12';
+var STORE_KEY = 'td_app_v13';
 function saveToStorage() {
   try { localStorage.setItem(STORE_KEY, JSON.stringify({a: accts, t: txnData})); } catch(e) {}
 }
@@ -1154,7 +1154,10 @@ function loadFromStorage() {
     if (!raw) return false;
     var d = JSON.parse(raw);
     if (d && d.a && d.t && d.a.length === accts.length && d.t.length === txnData.length) {
-      for (var i = 0; i < accts.length; i++) accts[i].bal = d.a[i].bal;
+      for (var i = 0; i < accts.length; i++) {
+        accts[i].bal = d.a[i].bal;
+        if (d.a[i].num) accts[i].num = d.a[i].num;
+      }
       for (var i = 0; i < txnData.length; i++) txnData[i] = d.t[i];
       // Clean legacy names
       for (var i = 0; i < txnData.length; i++)
