@@ -207,7 +207,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .nb.on .nb-lbl{color:#272727;font-weight:600;}
 .txn-ov{position:fixed;inset:0;background:rgba(0,0,0,0);z-index:550;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;transition:background .3s ease;}
 .txn-ov.open{background:rgba(0,0,0,.52);pointer-events:all;}
-.txn-drawer{width:100%;max-width:430px;background:#f2f2f7;border-radius:22px 22px 0 0;transform:translateY(105%);transition:transform .4s cubic-bezier(.32,.72,0,1);height:calc(100% - max(var(--st),44px) - 44px);display:flex;flex-direction:column;overflow:hidden;}
+.txn-drawer{width:100%;max-width:430px;background:#f2f2f7;border-radius:22px 22px 0 0;transform:translateY(105%);transition:transform .4s cubic-bezier(.32,.72,0,1);height:calc(100% - max(var(--st),44px) - 44px);max-height:82dvh;display:flex;flex-direction:column;overflow:hidden;}
 .txn-ov.open .txn-drawer{transform:translateY(0);}
 .edit-sheet-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;opacity:0;transition:opacity .3s ease;}
 .edit-sheet-overlay.open{pointer-events:all;opacity:1;}
